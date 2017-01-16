@@ -1,5 +1,7 @@
 ### color_map.py
- 
+
+#based on http://flowingdata.com/2009/11/12/how-to-make-a-us-county-thematic-map-using-free-tools/
+
 import csv
 from bs4 import BeautifulSoup
  
