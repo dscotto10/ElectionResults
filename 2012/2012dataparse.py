@@ -39,14 +39,7 @@ while j < len(splitset):
 		countyname = str(splitset[j+1][2:]) + str(splitset[j+2]) + str(splitset[j+3])
 		stateFIPS = "02"
 		countyFIPS = splitset[j+4]
-		obamavotes = splitset[j+5][0:splitset[j+5].find(".")]
-		romneyvotes = splitset[j+6][0:splitset[j+6].find(".")]
-		othervotes = splitset[j+7][0:splitset[j+7].find(".")]
-		obamaper = float(splitset[j+8]) / 100
-		romneyper = float(splitset[j+9]) / 100
-		otherper = float(splitset[j+10]) / 100
-		
-		j += 14
+		k = 3
 		
 	else:
 		while stateFIPS_dict[stateabbrv] != splitset[j+k+1][0:2]:
@@ -56,14 +49,15 @@ while j < len(splitset):
 			countyname = countyname + str(splitset[j+1+m])
 		stateFIPS = splitset[j+k+1][0:2]
 		countyFIPS = splitset[j+k+1][2:]
-		obamavotes = splitset[j+k+2][0:splitset[j+k+2].find(".")]
-		romneyvotes = splitset[j+k+3][0:splitset[j+k+3].find(".")]
-		othervotes = splitset[j+k+4][0:splitset[j+k+4].find(".")]
-		obamaper = float(splitset[j+k+6]) / 100
-		romneyper = float(splitset[j+k+7]) / 100
-		otherper = float(splitset[j+k+8][0:5]) / 100
 		
-		j = j + k + 11
+	obamavotes = splitset[j+k+2][0:splitset[j+k+2].find(".")]
+	romneyvotes = splitset[j+k+3][0:splitset[j+k+3].find(".")]
+	othervotes = splitset[j+k+4][0:splitset[j+k+4].find(".")]
+	obamaper = float(splitset[j+k+6]) / 100
+	romneyper = float(splitset[j+k+7]) / 100
+	otherper = float(splitset[j+k+8][0:5]) / 100
+	
+	j = j + k + 11
 	
 	countyline = []
 		
@@ -82,6 +76,3 @@ while j < len(splitset):
 	with open('2012results.csv', 'a') as csvfile:
 		countylinewriter = csv.writer(csvfile, delimiter=',')
 		countylinewriter.writerow(countyline)
-
-		
-		
